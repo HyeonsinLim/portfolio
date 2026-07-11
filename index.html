@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> [HR Portfolio] 임현신 | 인건비·평가보상 전문 HRer</title>
+<title>임현신 | People Team, 인건비·보상 전문가</title>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -84,7 +84,7 @@ ul{list-style:none;}
 
 /* ---------------- main ---------------- */
 main{flex:1; min-width:0;}
-.page{max-width:760px; margin:0 auto; padding:64px 48px 100px;}
+.page{max-width:1180px; margin:0 auto; padding:64px 56px 100px;}
 
 .breadcrumb{
   font-size:12.5px; color:var(--text-faint); margin-bottom:28px;
@@ -123,7 +123,7 @@ h1.title{font-size:30px; font-weight:700; color:var(--text); margin-bottom:4px; 
   font-size:12px; padding:2px 9px; border-radius:4px; margin:2px 6px 2px 0;
 }
 
-.lede{color:var(--text-soft); font-size:14.5px; max-width:600px; margin:20px 0 8px; padding:16px 16px 16px 44px; background:var(--bg-green); border-radius:var(--radius); position:relative;}
+.lede{color:var(--text-soft); font-size:14.5px; margin:20px 0 8px; padding:16px 16px 16px 44px; background:var(--bg-green); border-radius:var(--radius); position:relative;}
 .lede::before{content:"💬"; position:absolute; left:14px; top:15px; font-size:16px;}
 
 /* stat row */
@@ -194,9 +194,14 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 .callout .c-icon{font-size:14px; flex-shrink:0;}
 
 /* project cards */
+#projListView{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start;}
 .proj-card{
-  border:1px solid var(--border); border-radius:10px; padding:20px 22px; margin-bottom:14px;
+  border:1px solid var(--border); border-radius:10px; padding:20px 22px;
   cursor:pointer; transition:border-color 0.2s, box-shadow 0.2s, transform 0.2s; background:#fff;
+}
+.proj-more{grid-column:1 / -1;}
+@media (max-width:680px){
+  #projListView{grid-template-columns:1fr;}
 }
 .proj-card:hover, .proj-card:focus-visible{
   border-color:var(--green); box-shadow:0 6px 18px rgba(47,123,79,0.09); transform:translateY(-1px); outline:none;
@@ -617,8 +622,8 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
               <span class="proj-cat-badge">제도·정책 설계</span>
               <span class="proj-period">2026.05 – 2026.06 · 2개월</span>
             </div>
-            <h3 class="proj-card-title">평가제도 설계</h3>
-            <p class="proj-card-summary">'평가'가 아닌 '피드백' 중심 제도로 설계를 전환해, 저성과자 관리의 객관적 근거를 확보하고 조직의 인재밀도를 높였다.</p>
+            <h3 class="proj-card-title">당근서비스 정기 피드백 제도 도입</h3>
+            <p class="proj-card-summary">'평가'가 아닌 '피드백' 중심 제도로 설계를 전환해, 저성과자 관리의 객관적 근거를 확보하고 조직의 인재밀도를 높였습니다.</p>
             <div class="proj-card-tags">
               <span class="proj-tag">제도설계</span><span class="proj-tag">평가보상</span><span class="proj-tag">다면평가</span>
             </div>
@@ -631,7 +636,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
               <span class="proj-period">2025.02 · 1개월</span>
             </div>
             <h3 class="proj-card-title">육아휴직 3법 개정에 따른 근태제도 개편</h3>
-            <p class="proj-card-summary">법 개정에 맞춰 근태·복리후생 제도와 안내 체계를 전면 재정비해, 관련 문의를 85% 줄이고 제도 만족도를 24%p 끌어올렸다.</p>
+            <p class="proj-card-summary">법 개정에 맞춰 근태·복리후생 제도와 안내 체계를 전면 재정비해, 관련 문의를 85% 줄이고 제도 만족도를 24%p 끌어올렸습니다.</p>
             <div class="proj-card-tags">
               <span class="proj-tag">노무</span><span class="proj-tag">복리후생</span><span class="proj-tag">UX개선</span>
             </div>
@@ -644,7 +649,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
               <span class="proj-period">2026.05 · 1개월</span>
             </div>
             <h3 class="proj-card-title">HR 인건비 리포트 개발</h3>
-            <p class="proj-card-summary">예산 관리 툴이 없던 환경에서 BigQuery와 스프레드시트로 실시간 인력·인건비 리포트를 직접 설계해 경영진 의사결정을 상시 지원했다.</p>
+            <p class="proj-card-summary">예산 관리 툴이 없던 환경에서 BigQuery와 스프레드시트로 실시간 인력·인건비 리포트를 직접 설계해 경영진 의사결정을 상시 지원했습니다.</p>
             <div class="proj-card-tags">
               <span class="proj-tag">자동화</span><span class="proj-tag">BigQuery</span><span class="proj-tag">인건비분석</span>
             </div>
@@ -657,7 +662,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
               <span class="proj-period">2022.11 – 2023.03 · 5개월</span>
             </div>
             <h3 class="proj-card-title">CJ그룹 채용 시스템 'TAS' 개편</h3>
-            <p class="proj-card-summary">흩어져 있던 채용 데이터를 통합 대시보드로 구축해 의사결정 속도를 높이고, 지원자 만족도와 평가 효율을 동시에 개선했다.</p>
+            <p class="proj-card-summary">흩어져 있던 채용 데이터를 통합 대시보드로 구축해 의사결정 속도를 높이고, 지원자 만족도와 평가 효율을 동시에 개선했습니다.</p>
             <div class="proj-card-tags">
               <span class="proj-tag">대시보드</span><span class="proj-tag">채용</span><span class="proj-tag">UX설계</span>
             </div>
@@ -675,12 +680,12 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
           <div class="proj-detail" id="proj1" hidden>
             <button type="button" class="proj-back" data-back>← 프로젝트 목록</button>
             <div class="proj-detail-meta"><span class="proj-cat-badge">제도·정책 설계</span><span class="proj-period">2026.05 – 2026.06 · 2개월</span></div>
-            <h2 class="proj-detail-title">평가제도 설계</h2>
-            <div class="proj-summary-box">'평가'가 아닌 '피드백' 중심 제도로 설계를 전환해, 저성과자 관리의 객관적 근거를 확보하고 조직의 인재밀도를 높였다.</div>
+            <h2 class="proj-detail-title">당근서비스 정기 피드백 제도 도입</h2>
+            <div class="proj-summary-box">'평가'가 아닌 '피드백' 중심 제도로 설계를 전환해, 저성과자 관리의 객관적 근거를 확보하고 조직의 인재밀도를 높였습니다.</div>
 
             <div class="proj-sec">
               <h4>배경</h4>
-              <p>설립 6년차임에도 정식 평가제도가 부재했고, 2025년 처음 시행된 약식 자기·리더평가는 사회초년생 비중이 높은 구성원들에게 낯설어 결과가 본인에게 어떻게 연계되는지 체감하기 어려웠다. CX 조직임에도 인센티브 지표가 문의처리량·응대품질 중심이라 고객경험 개선 행동에 대한 보상 연계가 없었고, 검증되지 않은 채용 프로세스로 저성과자 비중도 높아 인사조치 필요성이 함께 대두됐다.</p>
+              <p>설립 6년차임에도 정식 평가제도가 부재했고, 2025년 처음 시행된 약식 자기·리더평가는 사회초년생 비중이 높은 구성원들에게 낯설어 결과가 본인에게 어떻게 연계되는지 체감하기 어려웠습니다. CX 조직임에도 인센티브 지표가 문의처리량·응대품질 중심이라 고객경험 개선 행동에 대한 보상 연계가 없었고, 검증되지 않은 채용 프로세스로 저성과자 비중도 높아 인사조치 필요성이 함께 대두됐습니다.</p>
             </div>
 
             <div class="proj-process">
@@ -712,8 +717,8 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
                 <div class="step-content">
                   <span class="step-label">실행</span>
                   <ul>
-                    <li>L2~L5 약 60명 규모 조직에 적용</li>
-                    <li>자기·동료·리더 다면평가 프레임과 절대평가 5단계 등급(EE/MAE/MME/NI/UN) 설계</li>
+                    <li>약 100명 규모 조직에 적용</li>
+                    <li>자기·동료·리더 다면평가 프레임과 절대평가 5단계 등급 설계</li>
                     <li>리더십 대상 실행 요약안 별도 제작 후 승인</li>
                   </ul>
                 </div>
@@ -742,11 +747,11 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
             <button type="button" class="proj-back" data-back>← 프로젝트 목록</button>
             <div class="proj-detail-meta"><span class="proj-cat-badge">제도·정책 설계</span><span class="proj-period">2025.02 · 1개월</span></div>
             <h2 class="proj-detail-title">육아휴직 3법 개정에 따른 근태제도 개편</h2>
-            <div class="proj-summary-box">법 개정에 맞춰 근태·복리후생 제도와 안내 체계를 전면 재정비해, 관련 문의를 85% 줄이고 제도 만족도를 24%p 끌어올렸다.</div>
+            <div class="proj-summary-box">법 개정에 맞춰 근태·복리후생 제도와 안내 체계를 전면 재정비해, 관련 문의를 85% 줄이고 제도 만족도를 24%p 끌어올렸습니다.</div>
 
             <div class="proj-sec">
               <h4>배경</h4>
-              <p>2025년 2월 시행된 '육아지원 3법' 개정으로 법적 기준이 상향되면서, 복지가 잘 갖춰진 기업이라는 인식이 강했던 CJ그룹 내에서도 일부 근태·휴가 제도가 새 법적 기준에 못 미치거나 비슷한 수준에 머무르는 항목이 발견됐다. 관련 안내가 여러 채널에 흩어져 있어 직원들이 본인에게 해당하는 제도를 파악하기 어려웠고, 문의도 반복적으로 발생하고 있었다.</p>
+              <p>2025년 2월 시행된 '육아지원 3법' 개정으로 법적 기준이 상향되면서, 복지가 잘 갖춰진 기업이라는 인식이 강했던 CJ그룹 내에서도 일부 근태·휴가 제도가 새 법적 기준에 못 미치거나 비슷한 수준에 머무르는 항목이 발견됐습니다. 관련 안내가 여러 채널에 흩어져 있어 직원들이 본인에게 해당하는 제도를 파악하기 어려웠고, 문의도 반복적으로 발생하고 있었습니다.</p>
             </div>
 
             <div class="proj-process">
@@ -807,11 +812,11 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
             <button type="button" class="proj-back" data-back>← 프로젝트 목록</button>
             <div class="proj-detail-meta"><span class="proj-cat-badge">시스템·자동화 구축</span><span class="proj-period">2026.05 · 1개월</span></div>
             <h2 class="proj-detail-title">HR 인건비 리포트 개발</h2>
-            <div class="proj-summary-box">예산 관리 툴이 없던 환경에서 BigQuery와 스프레드시트로 실시간 인력·인건비 리포트를 직접 설계해 경영진 의사결정을 상시 지원했다.</div>
+            <div class="proj-summary-box">예산 관리 툴이 없던 환경에서 BigQuery와 스프레드시트로 실시간 인력·인건비 리포트를 직접 설계해 경영진 의사결정을 상시 지원했습니다.</div>
 
             <div class="proj-sec">
               <h4>배경</h4>
-              <p>설립 6년차임에도 보안상 이유로 당근마켓과 동일한 어드민 프로그램을 사용할 수 없어 예산 관리 툴 자체가 부재했다. ERP 개발자 채용도 4개월 이상 소요되는 상황이었고, 전표 처리는 당근마켓 재무실이 대행하다 보니 예산 사용 내역을 상세히 조회할 권한조차 없어 근거 데이터 없이 인건비를 관리해야 했다.</p>
+              <p>설립 6년차임에도 보안상 이유로 당근마켓과 동일한 어드민 프로그램을 사용할 수 없어 예산 관리 툴 자체가 부재했습니다. ERP 개발자 채용도 4개월 이상 소요되는 상황이었고, 전표 처리는 당근마켓 재무실이 대행하다 보니 예산 사용 내역을 상세히 조회할 권한조차 없어 근거 데이터 없이 인건비를 관리해야 했습니다.</p>
             </div>
 
             <div class="proj-process">
@@ -871,11 +876,11 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
             <button type="button" class="proj-back" data-back>← 프로젝트 목록</button>
             <div class="proj-detail-meta"><span class="proj-cat-badge">시스템·자동화 구축</span><span class="proj-period">2022.11 – 2023.03 · 5개월</span></div>
             <h2 class="proj-detail-title">CJ그룹 채용 시스템 'TAS' 개편</h2>
-            <div class="proj-summary-box">흩어져 있던 채용 데이터를 통합 대시보드로 구축해 의사결정 속도를 높이고, 지원자 만족도와 평가 효율을 동시에 개선했다.</div>
+            <div class="proj-summary-box">흩어져 있던 채용 데이터를 통합 대시보드로 구축해 의사결정 속도를 높이고, 지원자 만족도와 평가 효율을 동시에 개선했습니다.</div>
 
             <div class="proj-sec">
               <h4>배경</h4>
-              <p>CJ그룹 임원·경력직 채용 과정의 진행 현황을 실시간으로 파악할 방법이 없어, 채용 단계별 데이터가 흩어진 채로 관리되고 있었고 의사결정에 필요한 현황 파악에 시간이 걸리는 구조였다.</p>
+              <p>CJ그룹 임원·경력직 채용 과정의 진행 현황을 실시간으로 파악할 방법이 없어, 채용 단계별 데이터가 흩어진 채로 관리되고 있었고 의사결정에 필요한 현황 파악에 시간이 걸리는 구조였습니다.</p>
             </div>
 
             <div class="proj-process">
