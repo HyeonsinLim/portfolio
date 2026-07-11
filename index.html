@@ -249,11 +249,10 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
   .page{padding:36px 20px 72px;}
   .stats{grid-template-columns:1fr;}
 }
-.reveal{opacity:0; transition:opacity 1s ease;}
-.reveal.show{opacity:1;}
+.reveal{opacity:0; will-change:opacity;}
 @media (prefers-reduced-motion: reduce){
   *{scroll-behavior:auto !important;}
-  .reveal{opacity:1 !important; transition:none !important;}
+  .reveal{opacity:1 !important;}
 }
 </style>
 </head>
@@ -316,11 +315,11 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
         <div class="section-title"><span class="s-icon">◆</span>소개</div>
         <div class="about-cols reveal">
           <div>
-            <p>HR은 사람을 관리하는 조직이 아니라, 회사가 더 나은 의사결정을 할 수 있도록 돕는 경영 파트너라고 믿습니다.</p>
-            <p>저는 데이터와 제도, 법률을 기반으로 조직의 문제를 발견하고 해결하는 HRer입니다. 숫자는 현상을 설명하고, 제도는 조직의 행동을 바꾸며, 법은 조직이 지속적으로 성장하기 위한 기준이라고 생각합니다.</p>
-            <p>이러한 신념을 바탕으로 급여·퇴직연금·원천세 등 인건비 운영부터 전사 인건비 경영계획과 예산 관리, 평가·보상 제도 설계, 노무 리스크 관리까지 HR 전반의 업무를 수행하며 경영진의 의사결정을 지원해 왔습니다.</p>
-            <p>현재는 당근서비스 피플팀에서 전사 인건비 전략과 예산을 운영하며, 데이터를 기반으로 의사결정의 근거를 제시하고 있습니다. 또한 AI를 활용해 HR 리포트와 업무 에이전트를 직접 개발해 반복 업무를 자동화함으로써 HR이 더 본질적인 문제 해결에 집중할 수 있는 환경을 만들고 있습니다.</p>
-            <p>저는 좋은 HR은 제도를 운영하는 사람이 아니라, 조직이 올바른 방향으로 성장하도록 기준을 만들고 실행하는 사람이라고 믿습니다. 앞으로도 데이터와 법률, 사람에 대한 이해를 바탕으로 조직의 더 나은 의사결정을 이끄는 HR 파트너가 되고자 합니다.</p>
+            <p>저는 데이터를 통해 조직의 문제를 먼저 발견하고, 제도와 법률을 기반으로 해결방안을 설계해 경영진의 의사결정으로 연결하는 HRer입니다.</p>
+            <p>급여·퇴직연금·원천세 등 인건비 운영의 기초 실무부터 전사 인건비 경영계획과 예산 관리, 평가·보상 제도 설계, 노무 리스크 관리까지 HR 전반을 경험하며, 단순한 운영이 아닌 조직의 의사결정을 지원하는 역할을 수행해 왔습니다.</p>
+            <p>현재는 당근서비스 피플팀에서 전사 인건비 및 필수행정경비 전략을 수립하고 경영계획과 예산을 운영하고 있습니다. 숫자를 단순히 관리하는 것이 아니라 데이터를 통해 문제를 발견하고 다양한 시나리오를 검토해 조직이 최적의 선택을 할 수 있도록 의사결정의 근거를 제시합니다. 또한 AI를 활용해 HR 인건비 리포트와 업무 에이전트를 직접 개발하며 반복 업무를 자동화하고, HR이 더 본질적인 문제 해결에 집중할 수 있는 환경을 만들었습니다.</p>
+            <p>노무 영역에서도 근로기준법과 노동관계 법령에 대한 이해를 바탕으로 리스크를 사전에 예방하고, 법적 안정성과 조직 운영의 현실을 함께 고려한 해결방안을 제시해 왔습니다. 평가와 보상 역시 조직이 원하는 행동과 성과를 이끌어내는 경영 시스템이라는 관점에서, 명확한 기준과 원칙을 기반으로 인재밀도를 높이는 제도를 설계하고 운영해 왔습니다.</p>
+            <p>앞으로도 문제를 가장 먼저 발견하고, 실행 가능한 해결책을 제안하며, 데이터와 제도, 법률을 연결해 조직이 더 나은 의사결정을 내릴 수 있도록 기여하는 HR 전문가가 되고자 합니다.</p>
           </div>
           <div>
             <div class="stats stacked">
@@ -651,15 +650,35 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
 <script>
 (function(){
-  var revealObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-        revealObserver.unobserve(entry.target);
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(reduceMotion || !revealEls.length){
+    revealEls.forEach(function(el){ el.style.opacity = 1; });
+  } else {
+    var ticking = false;
+    function updateReveals(){
+      var vh = window.innerHeight;
+      var start = vh * 0.92;
+      var end = vh * 0.45;
+      revealEls.forEach(function(el){
+        var rect = el.getBoundingClientRect();
+        var progress = (start - rect.top) / (start - end);
+        if(progress < 0) progress = 0;
+        if(progress > 1) progress = 1;
+        el.style.opacity = progress;
+      });
+      ticking = false;
+    }
+    function onScroll(){
+      if(!ticking){
+        window.requestAnimationFrame(updateReveals);
+        ticking = true;
       }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    updateReveals();
+  }
 })();
 
 (function(){
