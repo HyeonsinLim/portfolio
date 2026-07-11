@@ -249,7 +249,9 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
   .page{padding:36px 20px 72px;}
   .stats{grid-template-columns:1fr;}
 }
-@media (prefers-reduced-motion: reduce){*{transition:none !important; scroll-behavior:auto !important;}}
+.reveal{opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease;}
+.reveal.show{opacity:1; transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; scroll-behavior:auto !important;} .reveal{opacity:1; transform:none;}}
 </style>
 </head>
 <body>
@@ -309,7 +311,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
 <div class="section" id="about">
         <div class="section-title"><span class="s-icon">◆</span>소개</div>
-        <div class="about-cols">
+        <div class="about-cols reveal">
           <div>
             <p>HR은 사람을 관리하는 조직이 아니라, 회사가 더 나은 의사결정을 할 수 있도록 돕는 경영 파트너라고 믿습니다.</p>
             <p>저는 감이나 관행이 아닌 데이터와 제도, 그리고 법률을 기반으로 조직의 문제를 발견하고 해결하는 HRer입니다. 숫자는 현상을 설명하고, 제도는 조직의 행동을 바꾸며, 법은 회사가 지속적으로 성장하기 위한 최소한의 기준이라고 생각합니다. HR은 이 세 가지를 연결해 조직이 올바른 방향으로 움직이도록 만드는 역할을 해야 한다고 믿습니다.</p>
@@ -342,7 +344,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
         <div class="section-title"><span class="s-icon">◆</span>경력</div>
         <div class="section-desc">총 <span id="careerDesc">-</span></div>
 
-        <div class="toggle open">
+        <div class="toggle open reveal">
           <div class="toggle-head" role="button" tabindex="0" aria-expanded="true">
             <span class="tri">▶</span>
             <div class="toggle-head-main">
@@ -408,7 +410,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
           </div>
         </div>
 
-        <div class="toggle">
+        <div class="toggle reveal">
           <div class="toggle-head" role="button" tabindex="0" aria-expanded="false">
             <span class="tri">▶</span>
             <div class="toggle-head-main">
@@ -481,7 +483,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
           </div>
         </div>
 
-        <div class="toggle">
+        <div class="toggle reveal">
           <div class="toggle-head" role="button" tabindex="0" aria-expanded="false">
             <span class="tri">▶</span>
             <div class="toggle-head-main">
@@ -540,7 +542,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
       <div class="section" id="projects">
         <div class="section-title"><span class="s-icon">◆</span>프로젝트</div>
-        <div class="empty-callout">
+        <div class="empty-callout reveal">
           <div class="e-icon">＋</div>
           <div class="e-title">프로젝트 상세 콘텐츠 준비 중</div>
           <p>인건비 분석, 평가보상 제도 설계, HR 자동화 등 실제 수행한 프로젝트를 곧 이 자리에 추가할 예정입니다.</p>
@@ -551,7 +553,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
       <div class="section" id="certs">
         <div class="section-title"><span class="s-icon">◆</span>자격증</div>
-        <div class="table-wrap">
+        <div class="table-wrap reveal">
           <table class="ntable">
             <thead><tr><th>자격증</th><th>취득일</th></tr></thead>
             <tbody>
@@ -577,23 +579,23 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
       <div class="section" id="edu">
         <div class="section-title"><span class="s-icon">◆</span>교육이수</div>
-        <div class="edu-item">
+        <div class="edu-item reveal">
           <div class="e-name">2024 HR Basic</div>
           <div class="e-meta">40시간 · 씨제이(주) 필동 인재원 · 2024.11.25 – 2024.11.29</div>
         </div>
-        <div class="edu-item">
+        <div class="edu-item reveal">
           <div class="e-name">핵심 PLUS! 물류관리와 물류혁신</div>
           <div class="e-meta">16시간 · 한국기업교육진흥평생교육원 · 2021.05</div>
         </div>
-        <div class="edu-item">
+        <div class="edu-item reveal">
           <div class="e-name">[고급] 스마트경영 지원을 위한 회계관리 실무</div>
           <div class="e-meta">16시간 · 아이파경영학원 · 2020.11.30 – 2020.12.01</div>
         </div>
-        <div class="edu-item">
+        <div class="edu-item reveal">
           <div class="e-name">e-비즈니스</div>
           <div class="e-meta">21시간 · 한국기업교육진흥평생교육원 · 2020.11</div>
         </div>
-        <div class="edu-item">
+        <div class="edu-item reveal">
           <div class="e-name">사내근로복지기금 운영 및 회계</div>
           <div class="e-meta">16시간 · 씨에프오아카데미평생교육원 · 2020.07.13 – 2020.07.14</div>
         </div>
@@ -605,30 +607,30 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
       <div class="section" id="skills">
         <div class="section-title"><span class="s-icon">◆</span>기술</div>
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h4>데이터분석</h4>
           <div class="skill-row"><span class="skill-name">Claude</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
           <div class="skill-row"><span class="skill-name">Google Data Studio</span><div class="skill-bar"><div class="skill-fill" data-lvl="7"></div></div><span class="skill-lvl">7/10</span></div>
         </div>
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h4>문서작성</h4>
           <div class="skill-row"><span class="skill-name">PowerPoint</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
           <div class="skill-row"><span class="skill-name">Excel</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
           <div class="skill-row"><span class="skill-name">Word</span><div class="skill-bar"><div class="skill-fill" data-lvl="7"></div></div><span class="skill-lvl">7/10</span></div>
         </div>
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h4>협업 · 커뮤니케이션</h4>
           <div class="skill-row"><span class="skill-name">Microsoft Teams</span><div class="skill-bar"><div class="skill-fill" data-lvl="9"></div></div><span class="skill-lvl">9/10</span></div>
           <div class="skill-row"><span class="skill-name">Notion</span><div class="skill-bar"><div class="skill-fill" data-lvl="6"></div></div><span class="skill-lvl">6/10</span></div>
           <div class="skill-row"><span class="skill-name">Slack</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
         </div>
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h4>디자인 · 소셜 운영</h4>
           <div class="skill-row"><span class="skill-name">Canva</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
           <div class="skill-row"><span class="skill-name">YouTube Studio</span><div class="skill-bar"><div class="skill-fill" data-lvl="6"></div></div><span class="skill-lvl">6/10</span></div>
           <div class="skill-row"><span class="skill-name">Photoshop</span><div class="skill-bar"><div class="skill-fill" data-lvl="5"></div></div><span class="skill-lvl">5/10</span></div>
         </div>
-        <div class="skill-group">
+        <div class="skill-group reveal">
           <h4>ERP</h4>
           <div class="skill-row"><span class="skill-name">더존 Smart A</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
           <div class="skill-row"><span class="skill-name">더존 ERP10</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
@@ -647,6 +649,18 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 </div>
 
 <script>
+(function(){
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+})();
+
 (function(){
   var start = new Date(2020, 1, 1);
   var now = new Date();
