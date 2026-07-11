@@ -97,7 +97,7 @@ main{flex:1; min-width:0;}
   color:#fff; display:flex; align-items:center; justify-content:center;
   font-size:26px; font-weight:700; margin-bottom:20px;
 }
-.header-row{display:flex; align-items:center; gap:20px; margin-bottom:20px;}
+.header-row{display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:20px; flex-wrap:wrap;}
 .profile-photo{
   width:124px; height:124px; border-radius:50%; object-fit:cover;
   border:1px solid var(--border-strong); flex-shrink:0;
@@ -132,6 +132,7 @@ h1.title{font-size:30px; font-weight:700; color:var(--text); margin-bottom:4px; 
   background:var(--border); border:1px solid var(--border); border-radius:var(--radius);
   margin:28px 0 8px; overflow:hidden;
 }
+.stats.stacked{grid-template-columns:1fr; margin:0 0 20px;}
 .stat{background:#fff; padding:16px 18px;}
 .stat .num{font-family:'JetBrains Mono', monospace; font-weight:600; font-size:20px; color:var(--green-deep); display:block; margin-bottom:4px;}
 .stat .lbl{font-size:11.5px; color:var(--text-soft);}
@@ -306,13 +307,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
         문제를 발견하고 주도적으로 해결방안을 모색해 조직의 의사결정으로 연결하는 HRer입니다.
       </div>
 
-      <div class="stats">
-        <div class="stat"><span class="num" id="careerStat">-</span><span class="lbl">총 HR 실무 경력</span></div>
-        <div class="stat"><span class="num">1,900명</span><span class="lbl">급여관리, 연말정산 · CJ ENM 4개년 수행</span></div>
-        <div class="stat"><span class="num">38,614주</span><span class="lbl">양도조건부주식보상제도 운영 대상 약 1,800명</span></div>
-      </div>
-
-      <div class="section" id="about">
+<div class="section" id="about">
         <div class="section-title"><span class="s-icon">◆</span>소개</div>
         <div class="about-cols">
           <div>
@@ -324,12 +319,19 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
             <p>인재밀도를 높이는 것도 제가 중요하게 생각하는 과제입니다. 조직문화를 흐리거나 성과가 지속적으로 낮은 구성원에게는 명확한 기준과 절차로 필요한 조치를 취하고, 반대로 성과를 잘 내는 구성원에게는 확실한 동기부여가 되도록 보상제도를 설계하거나 사내행사를 기획해 구성원들의 업무 몰입을 이끌어내고 있습니다.</p>
             <p>앞으로도 데이터와 법률, 사람에 대한 이해를 바탕으로 문제를 먼저 발견하고, 주도적으로 해결하며, 조직이 더 나은 의사결정을 할 수 있도록 돕는 HR 파트너가 되고자 합니다.</p>
           </div>
-          <div class="mini-table">
+          <div>
+            <div class="stats stacked">
+              <div class="stat"><span class="num" id="careerStat">-</span><span class="lbl">총 HR 실무 경력</span></div>
+              <div class="stat"><span class="num">1,900명</span><span class="lbl">급여관리, 연말정산 · CJ ENM 4개년 수행</span></div>
+              <div class="stat"><span class="num">38,614주</span><span class="lbl">양도조건부주식보상제도 운영 대상 약 1,800명</span></div>
+            </div>
+            <div class="mini-table">
             <div class="row"><span class="k">보상 운영</span><span class="v">급여·퇴직연금·4대보험·연말정산</span></div>
             <div class="row"><span class="k">평가 보상</span><span class="v">승진·인센티브·KPI·정기평가</span></div>
             <div class="row"><span class="k">인력·노무</span><span class="v">조직개편·징계위원회·취업규칙</span></div>
             <div class="row"><span class="k">재무 관리</span><span class="v">인건비 전략·경영계획·예산</span></div>
             <div class="row"><span class="k">HR 자동화</span><span class="v">AI 리포트·Slack 알람봇</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -338,7 +340,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
 
       <div class="section" id="career">
         <div class="section-title"><span class="s-icon">◆</span>경력</div>
-        <div class="section-desc">총 <span id="careerDesc">-</span> · 항목을 클릭하면 상세 업무를 펼쳐볼 수 있습니다.</div>
+        <div class="section-desc">총 <span id="careerDesc">-</span></div>
 
         <div class="toggle open">
           <div class="toggle-head" role="button" tabindex="0" aria-expanded="true">
@@ -631,6 +633,7 @@ hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
         <div class="skill-group">
           <h4>데이터분석</h4>
           <div class="skill-row"><span class="skill-name">Google Data Studio</span><div class="skill-bar"><div class="skill-fill" data-lvl="7"></div></div><span class="skill-lvl">7/10</span></div>
+          <div class="skill-row"><span class="skill-name">Claude</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
         </div>
       </div>
 
