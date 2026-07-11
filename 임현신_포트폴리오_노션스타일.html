@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>임현신 | People Team, 인건비·보상 전문가</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#FFFFFF;
+  --bg-sidebar:#FBFBFA;
+  --bg-hover:#F4F4F2;
+  --bg-green:#EDF3EC;
+  --bg-green-strong:#DCEBDD;
+  --border:#EDECE9;
+  --border-strong:#E3E2DD;
+  --text:#37352F;
+  --text-soft:#787774;
+  --text-faint:#9B9A97;
+  --green:#2F7B4F;
+  --green-deep:#1F5C39;
+  --sidebar-w:268px;
+  --radius:6px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Pretendard', -apple-system, sans-serif;
+  font-size:15px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--bg-green-strong);}
+a{color:inherit;}
+ul{list-style:none;}
+
+/* ---------------- layout shell ---------------- */
+.shell{display:flex; min-height:100vh;}
+
+/* ---------------- sidebar ---------------- */
+.sidebar{
+  width:var(--sidebar-w); flex-shrink:0;
+  background:var(--bg-sidebar); border-right:1px solid var(--border);
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  padding:20px 12px;
+}
+.side-profile{
+  display:flex; align-items:center; gap:10px;
+  padding:8px 8px 16px; margin-bottom:8px; border-bottom:1px solid var(--border);
+}
+.side-avatar{
+  width:32px; height:32px; border-radius:7px; background:var(--green);
+  color:#fff; display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:14px; flex-shrink:0;
+}
+.side-profile-name{font-size:13.5px; font-weight:600; color:var(--text);}
+.side-profile-role{font-size:11.5px; color:var(--text-soft);}
+
+.side-nav a{
+  display:flex; align-items:center; gap:8px;
+  font-size:13.5px; color:var(--text-soft);
+  padding:6px 8px; border-radius:var(--radius);
+  text-decoration:none; margin-bottom:1px;
+  transition:background 0.15s, color 0.15s;
+}
+.side-nav a:hover, .side-nav a.active{background:var(--bg-hover); color:var(--text);}
+.side-nav .n-i{
+  width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--text-faint); flex-shrink:0;
+}
+
+.side-contact{
+  margin-top:20px; padding-top:16px; border-top:1px solid var(--border);
+}
+.side-contact a{
+  display:block; font-size:12px; color:var(--text-soft); text-decoration:none;
+  padding:5px 8px; border-radius:var(--radius);
+}
+.side-contact a:hover{background:var(--bg-hover); color:var(--text);}
+
+.sidebar-toggle{display:none;}
+
+/* ---------------- main ---------------- */
+main{flex:1; min-width:0;}
+.page{max-width:760px; margin:0 auto; padding:64px 48px 100px;}
+
+.breadcrumb{
+  font-size:12.5px; color:var(--text-faint); margin-bottom:28px;
+  display:flex; align-items:center; gap:6px;
+}
+.breadcrumb .sep{color:var(--border-strong);}
+
+.page-icon{
+  width:64px; height:64px; border-radius:14px; background:var(--green);
+  color:#fff; display:flex; align-items:center; justify-content:center;
+  font-size:26px; font-weight:700; margin-bottom:20px;
+}
+
+h1.title{font-size:34px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-0.01em;}
+.subtitle{font-size:16px; color:var(--green-deep); font-weight:500; margin-bottom:24px;}
+
+/* property list, notion-style */
+.props{margin-bottom:28px;}
+.prop-row{
+  display:flex; align-items:flex-start; gap:0; font-size:13.5px;
+  border-bottom:1px solid transparent;
+}
+.prop-key{
+  width:120px; flex-shrink:0; color:var(--text-faint);
+  display:flex; align-items:center; gap:6px; padding:6px 8px 6px 0;
+}
+.prop-val{padding:6px 0; color:var(--text); flex:1;}
+.prop-val .pill{
+  display:inline-block; background:var(--bg-green); color:var(--green-deep);
+  font-size:12px; padding:2px 9px; border-radius:4px; margin:2px 6px 2px 0;
+}
+
+.lede{color:var(--text-soft); font-size:14.5px; max-width:600px; margin:20px 0 8px; padding:16px 16px 16px 44px; background:var(--bg-green); border-radius:var(--radius); position:relative;}
+.lede::before{content:"💬"; position:absolute; left:14px; top:15px; font-size:16px;}
+
+/* stat row */
+.stats{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--border); border:1px solid var(--border); border-radius:var(--radius);
+  margin:28px 0 8px; overflow:hidden;
+}
+.stat{background:#fff; padding:16px 18px;}
+.stat .num{font-family:'JetBrains Mono', monospace; font-weight:600; font-size:20px; color:var(--green-deep); display:block; margin-bottom:4px;}
+.stat .lbl{font-size:11.5px; color:var(--text-soft);}
+
+/* section */
+.section{margin-top:56px; scroll-margin-top:24px;}
+.section-title{
+  display:flex; align-items:center; gap:8px; font-size:20px; font-weight:700;
+  color:var(--text); margin-bottom:6px;
+}
+.section-title .s-icon{color:var(--green); font-size:16px;}
+.section-desc{font-size:13.5px; color:var(--text-faint); margin-bottom:20px;}
+hr.div{border:none; border-top:1px solid var(--border); margin:56px 0 0;}
+
+/* about grid */
+.about-cols{display:grid; grid-template-columns:1fr 1fr; gap:32px;}
+@media (max-width:640px){.about-cols{grid-template-columns:1fr;}}
+.about-cols p{font-size:14px; color:var(--text-soft); margin-bottom:14px;}
+.about-cols strong{color:var(--text); font-weight:600;}
+.mini-table .row{
+  display:flex; justify-content:space-between; gap:10px;
+  padding:9px 0; border-bottom:1px solid var(--border); font-size:13px;
+}
+.mini-table .row:first-child{border-top:1px solid var(--border);}
+.mini-table .k{color:var(--text); font-weight:500;}
+.mini-table .v{color:var(--text-faint); text-align:right;}
+
+/* toggle / career */
+.toggle{border-bottom:1px solid var(--border);}
+.toggle:first-child{border-top:1px solid var(--border);}
+.toggle-head{
+  display:flex; align-items:center; gap:8px; padding:14px 4px;
+  cursor:pointer; user-select:none;
+}
+.toggle-head:hover{background:var(--bg-hover); border-radius:var(--radius);}
+.tri{
+  font-size:10px; color:var(--text-faint); transition:transform 0.2s;
+  width:16px; text-align:center; flex-shrink:0;
+}
+.toggle.open .tri{transform:rotate(90deg);}
+.toggle-head-main{flex:1; display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;}
+.t-org{font-weight:600; font-size:15px; color:var(--text);}
+.t-role{font-size:12.5px; color:var(--text-faint); margin-left:8px;}
+.t-period{font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--text-soft); white-space:nowrap;}
+.toggle-body{max-height:0; overflow:hidden; transition:max-height 0.4s ease;}
+.toggle.open .toggle-body{max-height:1600px;}
+.toggle-body-inner{padding:4px 4px 22px 24px; display:grid; grid-template-columns:1fr 1fr; gap:22px 32px;}
+@media (max-width:640px){.toggle-body-inner{grid-template-columns:1fr;}}
+.scope h4{font-size:11.5px; color:var(--green-deep); font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.02em;}
+.scope li{font-size:13px; color:var(--text-soft); padding:4px 0 4px 14px; position:relative;}
+.scope li::before{content:"•"; position:absolute; left:0; color:var(--text-faint);}
+.callout{
+  grid-column:1/-1; display:flex; gap:10px; align-items:flex-start;
+  background:var(--bg-green); border-radius:var(--radius); padding:12px 14px; margin-top:6px;
+  font-size:12.5px; color:var(--green-deep);
+}
+.callout .c-icon{font-size:14px; flex-shrink:0;}
+
+/* table (certs/edu) */
+.ntable{width:100%; border-collapse:collapse; font-size:13px;}
+.ntable th{
+  text-align:left; font-size:11.5px; color:var(--text-faint); font-weight:500;
+  padding:8px 12px; border-bottom:1px solid var(--border-strong); background:var(--bg-sidebar);
+}
+.ntable td{padding:9px 12px; border-bottom:1px solid var(--border); color:var(--text);}
+.ntable tr:hover td{background:var(--bg-hover);}
+.ntable .date{font-family:'JetBrains Mono', monospace; color:var(--text-soft); font-size:12px; white-space:nowrap;}
+.table-wrap{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;}
+
+/* edu list */
+.edu-item{padding:12px 4px; border-bottom:1px solid var(--border);}
+.edu-item:first-child{border-top:1px solid var(--border);}
+.edu-item .e-name{font-size:14px; font-weight:500; color:var(--text); margin-bottom:3px;}
+.edu-item .e-meta{font-size:12px; color:var(--text-faint); font-family:'JetBrains Mono', monospace;}
+
+/* project placeholder */
+.empty-callout{
+  border:1px dashed var(--border-strong); border-radius:var(--radius);
+  padding:44px 24px; text-align:center; color:var(--text-faint);
+}
+.empty-callout .e-icon{font-size:22px; margin-bottom:10px;}
+.empty-callout .e-title{font-size:14.5px; font-weight:600; color:var(--text-soft); margin-bottom:6px;}
+.empty-callout p{font-size:13px; max-width:380px; margin:0 auto;}
+
+/* skills */
+.skill-group{margin-bottom:26px;}
+.skill-group h4{font-size:11.5px; color:var(--green-deep); font-weight:600; text-transform:uppercase; letter-spacing:0.02em; margin-bottom:12px;}
+.skill-row{display:flex; align-items:center; gap:12px; padding:6px 0;}
+.skill-name{width:150px; font-size:13px; color:var(--text); flex-shrink:0;}
+.skill-bar{flex:1; height:6px; background:var(--border); border-radius:3px; overflow:hidden;}
+.skill-fill{height:100%; background:var(--green); width:0%; border-radius:3px; transition:width 1s cubic-bezier(.2,.7,.3,1);}
+.skill-lvl{width:32px; text-align:right; font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--text-faint); flex-shrink:0;}
+.tool-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+.tool-tag{font-size:12px; background:var(--bg-hover); color:var(--text-soft); padding:4px 10px; border-radius:4px;}
+
+.page-footer{margin-top:64px; padding-top:24px; border-top:1px solid var(--border); font-size:12px; color:var(--text-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+/* mobile */
+.mobile-topbar{display:none;}
+@media (max-width:860px){
+  .sidebar{position:fixed; z-index:60; transform:translateX(-100%); transition:transform 0.25s ease; box-shadow:0 0 0 9999px rgba(0,0,0,0); top:0;}
+  .sidebar.open{transform:translateX(0); box-shadow:0 0 40px rgba(0,0,0,0.12);}
+  .mobile-topbar{
+    display:flex; align-items:center; gap:12px; height:52px; padding:0 16px;
+    border-bottom:1px solid var(--border); position:sticky; top:0; background:#fff; z-index:50;
+  }
+  .mobile-topbar button{
+    background:none; border:1px solid var(--border-strong); border-radius:6px;
+    width:32px; height:32px; font-size:16px; color:var(--text); cursor:pointer;
+  }
+  .mobile-topbar .mt-name{font-size:14px; font-weight:600;}
+  .page{padding:36px 20px 72px;}
+  .stats{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; scroll-behavior:auto !important;}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-profile">
+      <div class="side-avatar">임</div>
+      <div>
+        <div class="side-profile-name">임현신</div>
+        <div class="side-profile-role">People Team</div>
+      </div>
+    </div>
+    <nav class="side-nav">
+      <a href="#about" class="active"><span class="n-i">#</span>소개</a>
+      <a href="#career"><span class="n-i">#</span>경력</a>
+      <a href="#certs"><span class="n-i">#</span>자격증</a>
+      <a href="#edu"><span class="n-i">#</span>교육이수</a>
+      <a href="#projects"><span class="n-i">#</span>프로젝트</a>
+      <a href="#skills"><span class="n-i">#</span>기술</a>
+    </nav>
+    <div class="side-contact">
+      <a href="tel:+82-01-4020-4873">+82-01-4020-4873</a>
+      <a href="mailto:73gustls@gmail.com">73gustls@gmail.com</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="mobile-topbar">
+      <button id="sidebarToggle" aria-label="메뉴 열기">≡</button>
+      <span class="mt-name">임현신 · People Team</span>
+    </div>
+
+    <div class="page">
+      <div class="breadcrumb">People Team Wiki <span class="sep">/</span> 임현신</div>
+
+      <div class="page-icon">임</div>
+      <h1 class="title">임현신</h1>
+      <div class="subtitle">숫자로 신뢰를 증명하는, 인건비·보상 전문가</div>
+
+      <div class="props">
+        <div class="prop-row"><div class="prop-key">소속</div><div class="prop-val">당근서비스 · 피플팀</div></div>
+        <div class="prop-row"><div class="prop-key">경력</div><div class="prop-val">5년 10개월</div></div>
+        <div class="prop-row"><div class="prop-key">전문분야</div><div class="prop-val">
+          <span class="pill">인건비분석</span><span class="pill">급여관리</span><span class="pill">보상설계</span><span class="pill">노무관리</span><span class="pill">HR자동화</span>
+        </div></div>
+        <div class="prop-row"><div class="prop-key">연락처</div><div class="prop-val">+82-01-4020-4873 · 73gustls@gmail.com</div></div>
+      </div>
+
+      <div class="lede">
+        급여·퇴직연금·원천세 실무부터 인건비 예산 전략, 평가·보상 제도 설계까지—
+        숫자 하나가 만들어내는 리스크와 신뢰의 차이를 알고 일합니다. CJ ENM, 당근서비스를 거치며 쌓은 실무 데이터를 바탕으로 정확한 계산과 명확한 근거로 조직의 의사결정을 뒷받침합니다.
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="num">5년 10개월</span><span class="lbl">총 HR 실무 경력</span></div>
+        <div class="stat"><span class="num">1,900명</span><span class="lbl">연말정산 전담 · CJ ENM 3개년 연속</span></div>
+        <div class="stat"><span class="num">38,614주</span><span class="lbl">2025 RSU 부여 · 대상 1,827명</span></div>
+      </div>
+
+      <div class="section" id="about">
+        <div class="section-title"><span class="s-icon">◆</span>소개</div>
+        <div class="about-cols">
+          <div>
+            <p>급여·퇴직연금·원천세라는 <strong>인건비의 기초 실무</strong>부터 시작해, 인건비 경영계획 수립과 예산 관리, 평가·보상 제도 설계까지 인사의 처음과 끝을 두루 경험했습니다. CJ ENM에서는 약 1,900명 규모 조직의 연말정산을 3개년 연속 전담하고, 우리사주(RSU) 제도의 신설 실무를 진행하며 <strong>숫자가 곧 신뢰가 되는 일</strong>을 체득했습니다.</p>
+            <p>현재는 당근서비스 피플팀에서 인건비 및 필수행정경비 전략 수립, 전사 경영계획 예산 관리를 맡아 평가·보상 제도 설계부터 노무 리스크 관리까지 <strong>HR의 재무적 의사결정</strong>을 지원하고 있습니다. 동시에 반복 업무를 자동화하는 HR 리포트·알람봇을 직접 개발해 정확성과 효율을 함께 챙깁니다.</p>
+          </div>
+          <div class="mini-table">
+            <div class="row"><span class="k">보상 운영</span><span class="v">급여·퇴직연금·4대보험·연말정산</span></div>
+            <div class="row"><span class="k">평가 보상</span><span class="v">승진·인센티브·KPI·정기평가</span></div>
+            <div class="row"><span class="k">인력·노무</span><span class="v">조직개편·징계위원회·취업규칙</span></div>
+            <div class="row"><span class="k">재무 관리</span><span class="v">인건비 전략·경영계획·예산</span></div>
+            <div class="row"><span class="k">HR 자동화</span><span class="v">AI 리포트·Slack 알람봇</span></div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="div">
+
+      <div class="section" id="career">
+        <div class="section-title"><span class="s-icon">◆</span>경력</div>
+        <div class="section-desc">총 5년 10개월 · 항목을 클릭하면 상세 업무를 펼쳐볼 수 있습니다.</div>
+
+        <div class="toggle open">
+          <div class="toggle-head" role="button" tabindex="0" aria-expanded="true">
+            <span class="tri">▶</span>
+            <div class="toggle-head-main">
+              <span><span class="t-org">당근서비스 · 피플팀</span><span class="t-role">People Team</span></span>
+              <span class="t-period">2026.01 – 현재</span>
+            </div>
+          </div>
+          <div class="toggle-body">
+            <div class="toggle-body-inner">
+              <div class="scope">
+                <h4>보상운영 · 평가보상</h4>
+                <ul>
+                  <li>급여 및 복리후생, 퇴직연금 운용</li>
+                  <li>근태관리, 4대보험, 원천세 신고, 연말정산</li>
+                  <li>AI 활용 자동 HR 리포트 개발</li>
+                  <li>승진 프로모션, 인센티브 구조 설계 및 지급</li>
+                  <li>KPI 및 성과지표 관리</li>
+                  <li>정규직전환·수습평가·정기평가(상/하반기) 제도 기획운영</li>
+                </ul>
+              </div>
+              <div class="scope">
+                <h4>인력·노무 · 재무관리</h4>
+                <ul>
+                  <li>인력 재배치 프레임워크 설계, 전사 조직개편</li>
+                  <li>노무 리스크 관리(징계위원회, 권고사직 등)</li>
+                  <li>취업규칙 수정신고</li>
+                  <li>전사 경영계획 수립 및 예산 관리</li>
+                  <li>인건비 및 필수행정경비 전략 수립 및 관리</li>
+                  <li>계약서 법무검토·체결 관리, 세금계산서·법인카드 정산</li>
+                </ul>
+              </div>
+              <div class="scope">
+                <h4>조직문화</h4>
+                <ul>
+                  <li>AI 문화메세지 알람봇 '컬처메이트' 개발</li>
+                  <li>리더워크샵 TF장, 오피스공간개선 TF장</li>
+                  <li>출퇴근 지문 프로세스 도입</li>
+                  <li>All Hands Meeting, 전사 타운홀 미팅 기획운영</li>
+                </ul>
+              </div>
+              <div class="callout"><span class="c-icon">📌</span><span>전사 인건비·경영계획 예산을 총괄하며, 평가·보상 제도 설계 전 과정을 리드합니다.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toggle">
+          <div class="toggle-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="tri">▶</span>
+            <div class="toggle-head-main">
+              <span><span class="t-org">CJ ENM · 인사지원실 인사기획팀</span><span class="t-role">HR Planning</span></span>
+              <span class="t-period">2022.05 – 2025.12</span>
+            </div>
+          </div>
+          <div class="toggle-body">
+            <div class="toggle-body-inner">
+              <div class="scope">
+                <h4>급여 · 퇴직연금</h4>
+                <ul>
+                  <li>임직원 급여 지급 및 공제항목 검토</li>
+                  <li>4대보험 취득/상실 신고 및 월별 보험료 정산</li>
+                  <li>근태 및 휴가/휴직 관리 체계 운영</li>
+                  <li>퇴직연금 DB/DC 추계 관리, 사외적립자산 추가부보</li>
+                  <li>재정검증 및 퇴직계리보고, 퇴직금 정산 및 가입자 관리</li>
+                </ul>
+              </div>
+              <div class="scope">
+                <h4>원천세 · 인건비 DB 대응</h4>
+                <ul>
+                  <li>매월 10일 원천세 신고</li>
+                  <li>연말정산 전담 (약 1,900명 대상 / 3개년 수행)</li>
+                  <li>매월 인건비 실적 마감 및 분석</li>
+                  <li>회계감사 및 내부회계통제시스템 자료 대응</li>
+                  <li>사업보고서 공시 대응(임원·직원 현황, 보수총액 Top5 등)</li>
+                </ul>
+              </div>
+              <div class="scope">
+                <h4>RSU · 복리후생 · 기타</h4>
+                <ul>
+                  <li>우리사주(RSU) 부여를 위한 이사회 승인 자료 준비</li>
+                  <li>IR팀 협업 사업보고서 공시 자료 작성</li>
+                  <li>우리사주 전용 명세서 시스템 신설 실무 진행</li>
+                  <li>육아지원 3법 개정 TF 참여 및 임직원 설명회</li>
+                  <li>연봉조정·인센티브 Assistant, 인건비 경영계획 수립</li>
+                  <li>2024.12 통상임금 판례 변경에 따른 인건비 영향 분석 및 대응</li>
+                </ul>
+              </div>
+              <div class="callout"><span class="c-icon">📌</span><span>2025년 RSU 부여규모 1,827명 · 38,614주 — 통상임금 판례 변경 영향 분석 등 인건비 리스크 대응을 직접 수행.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toggle">
+          <div class="toggle-head" role="button" tabindex="0" aria-expanded="false">
+            <span class="tri">▶</span>
+            <div class="toggle-head-main">
+              <span><span class="t-org">(주)일양로지스 · 경영지원실 인사팀</span><span class="t-role">HR Generalist</span></span>
+              <span class="t-period">2020.02 – 2022.05</span>
+            </div>
+          </div>
+          <div class="toggle-body">
+            <div class="toggle-body-inner">
+              <div class="scope">
+                <h4>급여 · 퇴직연금</h4>
+                <ul>
+                  <li>임직원 급여 지급 및 공제항목 검토</li>
+                  <li>4대보험 취득/상실 신고 및 월별 보험료 정산</li>
+                  <li>근태 및 휴가/휴직 관리 체계 운영</li>
+                  <li>퇴직금 정산 및 가입자 관리, DB/DC 추계 관리</li>
+                  <li>사외적립자산 추가부보 및 재정검증</li>
+                </ul>
+              </div>
+              <div class="scope">
+                <h4>원천세 · 복리후생 · 행정지원</h4>
+                <ul>
+                  <li>매월 원천세 신고 및 납부</li>
+                  <li>연말정산 전담 (약 300명 대상, 1개년 수행)</li>
+                  <li>복리후생 제도 기획, 사내근로복지기금 관리</li>
+                  <li>법정의무교육 운영 및 이수율 관리</li>
+                  <li>정부 고용안정 지원금 신청 및 현황 관리</li>
+                  <li>장애인 고용현황 관리 및 기업부담금 납부</li>
+                </ul>
+              </div>
+              <div class="callout"><span class="c-icon">📌</span><span>급여·퇴직연금·원천세 실무를 처음부터 익히며 인건비 감각의 기초를 다진 시기.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="div">
+
+      <div class="section" id="certs">
+        <div class="section-title"><span class="s-icon">◆</span>자격증</div>
+        <div class="table-wrap">
+          <table class="ntable">
+            <thead><tr><th>자격증</th><th>취득일</th></tr></thead>
+            <tbody>
+              <tr><td>2종보통운전면허</td><td class="date">2021.07</td></tr>
+              <tr><td>정보처리기능사</td><td class="date">2019.07</td></tr>
+              <tr><td>컴퓨터활용능력 2급</td><td class="date">2019.04</td></tr>
+              <tr><td>MOS PowerPoint</td><td class="date">2019.01</td></tr>
+              <tr><td>MOS Access</td><td class="date">2019.01</td></tr>
+              <tr><td>회계정보처리(FAT) 2급</td><td class="date">2018.09</td></tr>
+              <tr><td>MOS Word</td><td class="date">2018.08</td></tr>
+              <tr><td>MOS Excel</td><td class="date">2018.07</td></tr>
+              <tr><td>전산회계 2급</td><td class="date">2018.02</td></tr>
+              <tr><td>ITQ 파워포인트</td><td class="date">2017.12</td></tr>
+              <tr><td>ITQ 액세스</td><td class="date">2017.11</td></tr>
+              <tr><td>ITQ 엑셀</td><td class="date">2017.08</td></tr>
+              <tr><td>ITQ 한글</td><td class="date">2017.06</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr class="div">
+
+      <div class="section" id="edu">
+        <div class="section-title"><span class="s-icon">◆</span>교육이수</div>
+        <div class="edu-item">
+          <div class="e-name">2024 HR Basic</div>
+          <div class="e-meta">40시간 · 씨제이(주) 필동 인재원 · 2024.11.25 – 2024.11.29</div>
+        </div>
+        <div class="edu-item">
+          <div class="e-name">핵심 PLUS! 물류관리와 물류혁신</div>
+          <div class="e-meta">16시간 · 한국기업교육진흥평생교육원 · 2021.05</div>
+        </div>
+        <div class="edu-item">
+          <div class="e-name">[고급] 스마트경영 지원을 위한 회계관리 실무</div>
+          <div class="e-meta">16시간 · 아이파경영학원 · 2020.11.30 – 2020.12.01</div>
+        </div>
+        <div class="edu-item">
+          <div class="e-name">e-비즈니스</div>
+          <div class="e-meta">21시간 · 한국기업교육진흥평생교육원 · 2020.11</div>
+        </div>
+        <div class="edu-item">
+          <div class="e-name">사내근로복지기금 운영 및 회계</div>
+          <div class="e-meta">16시간 · 씨에프오아카데미평생교육원 · 2020.07.13 – 2020.07.14</div>
+        </div>
+      </div>
+
+      <hr class="div">
+
+      <div class="section" id="projects">
+        <div class="section-title"><span class="s-icon">◆</span>프로젝트</div>
+        <div class="empty-callout">
+          <div class="e-icon">＋</div>
+          <div class="e-title">프로젝트 상세 콘텐츠 준비 중</div>
+          <p>인건비 분석, 평가보상 제도 설계, HR 자동화 등 실제 수행한 프로젝트를 곧 이 자리에 추가할 예정입니다.</p>
+        </div>
+      </div>
+
+      <hr class="div">
+
+      <div class="section" id="skills">
+        <div class="section-title"><span class="s-icon">◆</span>기술</div>
+        <div class="skill-group">
+          <h4>문서작성</h4>
+          <div class="skill-row"><span class="skill-name">PowerPoint</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
+          <div class="skill-row"><span class="skill-name">Excel</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
+          <div class="skill-row"><span class="skill-name">Word</span><div class="skill-bar"><div class="skill-fill" data-lvl="7"></div></div><span class="skill-lvl">7/10</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>협업 · 커뮤니케이션</h4>
+          <div class="skill-row"><span class="skill-name">Microsoft Teams</span><div class="skill-bar"><div class="skill-fill" data-lvl="9"></div></div><span class="skill-lvl">9/10</span></div>
+          <div class="skill-row"><span class="skill-name">Notion</span><div class="skill-bar"><div class="skill-fill" data-lvl="6"></div></div><span class="skill-lvl">6/10</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>디자인 · 소셜 운영</h4>
+          <div class="skill-row"><span class="skill-name">Canva</span><div class="skill-bar"><div class="skill-fill" data-lvl="10"></div></div><span class="skill-lvl">10/10</span></div>
+          <div class="skill-row"><span class="skill-name">YouTube Studio</span><div class="skill-bar"><div class="skill-fill" data-lvl="6"></div></div><span class="skill-lvl">6/10</span></div>
+          <div class="skill-row"><span class="skill-name">Photoshop</span><div class="skill-bar"><div class="skill-fill" data-lvl="5"></div></div><span class="skill-lvl">5/10</span></div>
+        </div>
+        <div class="skill-group">
+          <h4>기타</h4>
+          <div class="skill-row"><span class="skill-name">Google Data Studio</span><div class="skill-bar"><div class="skill-fill" data-lvl="4"></div></div><span class="skill-lvl">4/10</span></div>
+          <div class="tool-tags"><span class="tool-tag">더존 EAP</span><span class="tool-tag">SAP</span></div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>임현신 · People Team</span>
+        <span>73gustls@gmail.com · +82-01-4020-4873</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.toggle-head').forEach(function(head){
+  function toggle(){
+    var t = head.closest('.toggle');
+    var isOpen = t.classList.toggle('open');
+    head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  head.addEventListener('click', toggle);
+  head.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+  });
+});
+
+var skillObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      var fill = entry.target;
+      fill.style.width = (fill.dataset.lvl * 10) + '%';
+      skillObserver.unobserve(fill);
+    }
+  });
+}, {threshold:0.3});
+document.querySelectorAll('.skill-fill').forEach(function(el){ skillObserver.observe(el); });
+
+var sections = document.querySelectorAll('.section[id]');
+var navLinks = document.querySelectorAll('.side-nav a');
+var navObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      navLinks.forEach(function(l){ l.classList.remove('active'); });
+      var active = document.querySelector('.side-nav a[href="#' + entry.target.id + '"]');
+      if(active) active.classList.add('active');
+    }
+  });
+}, {rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(function(s){ navObserver.observe(s); });
+
+var sidebarToggle = document.getElementById('sidebarToggle');
+var sidebar = document.getElementById('sidebar');
+if(sidebarToggle){
+  sidebarToggle.addEventListener('click', function(){ sidebar.classList.toggle('open'); });
+  navLinks.forEach(function(l){
+    l.addEventListener('click', function(){ sidebar.classList.remove('open'); });
+  });
+}
+</script>
+
+</body>
+</html>
