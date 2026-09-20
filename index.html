@@ -577,8 +577,8 @@
 (function(){
   var start = new Date(2020, 1, 1);
   var now = new Date();
-  var totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
-  if(now.getDate() < start.getDate()) totalMonths -= 1;
+  // 입사월을 1개월로 포함해서 계산 (예: 2020.02 ~ 2026.09 = 6년 8개월)
+  var totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth()) + 1;
   if(totalMonths < 0) totalMonths = 0;
   var years = Math.floor(totalMonths / 12);
   var months = totalMonths % 12;
